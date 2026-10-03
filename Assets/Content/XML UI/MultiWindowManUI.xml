@@ -1,0 +1,80 @@
+<XmlLayout xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\ModTools\UI\XmlLayout.xsd">
+	<Include path="Ui/Xml/Flight/FlightStyles.xml" />
+	<Defaults>
+		<Panel minHeight="16" />
+		<TextMeshPro fontSize="18" preferredHeight="30" alignment="Left" color="rgb(0,0,0)"/>
+		<Button preferredHeight="30"/>
+	</Defaults>
+	<Panel width="384" height="512" color="rgba(1,1,1,0.5)" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+		<VerticalLayout childForceExpandHeight="0">
+			<Panel minHeight="30" color="#FF5500">
+				<TextMeshPro>Window Management</TextMeshPro>
+				<Button rectAlignment="MiddleRight" color="rgb(1,0,0)" minWidth="30" width="30" onClick="Hide();">X</Button>
+			</Panel>
+			<Panel minHeight="256" flexibleHeight="1">
+				<VerticalScrollView>
+					<VerticalLayout minHeight="1" childAlignment="UpperLeft" childForceExpandHeight="0" id="WindowList">
+						<VerticalLayout flexibleHeight="0" id="WindowRepresentExample" active="true">
+							<HorizontalLayout height="30" flexibleHeight="0" childForceExpandWidth="0">
+								<TextMeshPro flexibleWidth="1">Normal Window</TextMeshPro>
+								<Dropdown flexibleWidth="1" rectAlignment="MiddleRight" class="CameraSelection">
+									<Option>cam 1</Option>
+									<Option selected="true">cam 2</Option>
+								</Dropdown>
+								<Button rectAlignment="MiddleRight" color="rgb(1,0,0)" minWidth="30" width="30" class="WindowCloseButton">X</Button>
+							</HorizontalLayout>
+							<VerticalLayout height="90" flexibleHeight="0" childForceExpandWidth="0" class="AdvancedSettings">
+								<HorizontalLayout>
+									<InputField class="Name_Input" flexibleWidth="4" height="30" placeholderText="New Name..."></InputField>
+									<Button class="Name_Button" flexibleWidth="1" rectAlignment="MiddleRight" minWidth="30">Rename</Button>
+								</HorizontalLayout>
+								<HorizontalLayout>
+									<InputField class="Geometry_X" flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="X"></InputField>
+									<InputField class="Geometry_Y" flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="Y"></InputField>
+									<InputField class="Geometry_W" flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="Width"></InputField>
+									<InputField class="Geometry_H" flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="Height"></InputField>
+									<Button class="Geometry_Button" flexibleWidth="1" rectAlignment="MiddleRight" minWidth="30">Geometry</Button>
+								</HorizontalLayout>
+
+							</VerticalLayout>
+							<List vm-dataSource="windowDatas">
+								<VerticalLayout flexibleHeight="0" active="true">
+									<HorizontalLayout height="30" flexibleHeight="0" childForceExpandWidth="0">
+										<TextMeshPro flexibleWidth="1">Normal Window</TextMeshPro>
+										<Dropdown flexibleWidth="1" rectAlignment="MiddleRight" class="CameraSelection">
+											<Option>cam 1</Option>
+											<Option selected="true">cam 2</Option>
+										</Dropdown>
+										<Button rectAlignment="MiddleRight" color="rgb(1,0,0)" minWidth="30" width="30" class="WindowCloseButton">X</Button>
+									</HorizontalLayout>
+									<VerticalLayout height="90" flexibleHeight="0" childForceExpandWidth="0" class="AdvancedSettings">
+										<HorizontalLayout>
+											<InputField  flexibleWidth="4" height="30" placeholderText="New Name..." vm-dataSource="windowDatas.windowId"></InputField>
+											<Button flexibleWidth="1" rectAlignment="MiddleRight" minWidth="30">Rename</Button>
+										</HorizontalLayout>
+										<HorizontalLayout>
+											<InputField flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="X" vm-dataSource="windowDatas.geometry.X"></InputField>
+											<InputField flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="Y" vm-dataSource="windowDatas.geometry.Y"></InputField>
+											<InputField flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="Width" vm-dataSource="windowDatas.geometry.Width"></InputField>
+											<InputField flexibleWidth="1" height="30" characterValidation="Integer" placeholderText="Height" vm-dataSource="windowDatas.geometry.Height"></InputField>
+											<Button flexibleWidth="1" rectAlignment="MiddleRight" minWidth="30">Geometry</Button>
+										</HorizontalLayout>
+									</VerticalLayout>
+								</VerticalLayout>
+							</List>
+							<Panel minHeight="1" color ="rgb(0,0,0)"/>
+						</VerticalLayout>
+					</VerticalLayout>
+				</VerticalScrollView>
+			</Panel>
+			<Panel minHeight="1" color ="rgb(0,0,0)"/>
+			<Panel rectAlignment="LowerLeft" minHeight="78" color ="rgb(0.25,0.25,0.25)">
+				<VerticalLayout  childAlignment="UpperLeft" childForceExpandHeight="0">
+					<TextMeshPro color="rgb(1,1,1)">New Window</TextMeshPro>
+					<InputField vm-dataSource="myTestVariable" characterLimit="64" minHeight="30"></InputField>
+					<Button onClick="AddNewWindow();">Create</Button>
+				</VerticalLayout>
+			</Panel>
+		</VerticalLayout>
+	</Panel>
+</XmlLayout>

@@ -1,0 +1,8 @@
+{
+	"name": "Multi Window Client",
+	"references": [
+		"UnityEngine.UI",
+		"Unity.TextMeshPro",
+		"Unity.Mathematics"
+	]
+}
